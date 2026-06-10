@@ -4,7 +4,6 @@ import Orbit from "@/components/Orbit";
 import Dossier from "@/components/Dossier";
 import Credentials from "@/components/Credentials";
 import Projects from "@/components/Projects";
-import Signal from "@/components/Signal";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Assistant from "@/components/Assistant";
@@ -20,7 +19,6 @@ export default function Home() {
         <Dossier />
         <Credentials />
         <Projects />
-        <Signal />
         <Contact />
       </main>
       <Footer />

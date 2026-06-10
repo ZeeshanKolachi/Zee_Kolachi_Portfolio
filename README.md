@@ -8,14 +8,14 @@ Built with **Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Motion (
 
 ## ✨ What's inside
 
-- **Cinematic split hero** — identity + a live "mission dashboard" (visitor counter, social presence, milestone, project impact).
-- **Active Orbit** — social links + a tasteful live metrics strip (simulated for v1).
+- **Cinematic split hero** — identity + a "mission dashboard" of honest, CV-backed stats (years of experience, top AI-module grade, latest milestone, project count, social presence).
+- **Active Orbit** — social links + an animated strip of real credential stats (no fabricated traffic numbers).
 - **Intelligence Dossier** — skills, an experience timeline, and an achievements grid.
-- **Training & Clearance** — education, certifications, and languages (from your CV).
-- **Case Files** — interactive project cards that expand into full challenge → process → result stories.
-- **Signal Board** — testimonials wall.
-- **Open Channel** — contact CTA (WhatsApp, email) + CV download.
-- **AI Assistant** — a real **Gemini-powered** assistant (server-side, key never exposed) that answers questions about you from your CV and jumps to relevant sections. Falls back automatically to a built-in scripted assistant if the API is unavailable.
+- **Training & Clearance** — education, certifications, and languages (from the CV).
+- **Case Files** — interactive project cards that expand into full challenge → process → result stories, with optional GitHub/live-demo links + a "More on GitHub" CTA.
+- **Open Channel** — a working contact form (Formspree, with a prefilled-email fallback) plus WhatsApp, email, and CV download.
+- **AI Assistant** — a real **Gemini-powered** assistant (server-side, key never exposed) that answers questions from the CV and jumps to relevant sections. Falls back automatically to a built-in scripted assistant if the API is unavailable.
+- **Share-ready** — an auto-generated Open Graph / Twitter card image for clean link previews.
 - Mobile-first, accessible (skip link, focus states, reduced-motion support), and SEO-ready (metadata, JSON-LD, sitemap, robots).
 
 ---
@@ -40,13 +40,14 @@ npm run start    # serve the production build
 
 **Everything** the site shows lives in [`content/site.ts`](content/site.ts). Open it and edit the plain data — no need to touch components.
 
-Items marked `// TODO` still need you:
+To strengthen it over time:
 
-- **Projects** (`projects`) — replace the 3 draft case studies with your real ones.
-- **Testimonials** (`testimonials`) — add real quotes from colleagues/supervisors.
-- **Socials** (`socials`) — add Facebook / X / YouTube URLs and flip `active: true`. Follower/metric strings are placeholders.
+- **Projects** (`projects`) — the 3 case studies are real and honest. Add a `repo` (GitHub) and/or `demo` (live) URL to any one to reveal its links, and flesh out the challenge/process/result as you ship more.
+- **Socials** (`socials`) — add Facebook / X / YouTube URLs and flip `active: true`. The `metric` field is a short honest descriptor, not a follower count.
+- **Credential stats** (`credentialStats`) — the hero/Orbit numbers; keep them accurate as you earn more.
 - **CV** — already wired to `public/cv/Zeeshan_Ahmed_Kolachi_CV.pdf`. Replace that file to update.
 - **Photo (optional)** — drop a headshot at `public/profile.jpg`.
+- **Testimonials** — intentionally removed until you have real quotes. When you do, ask and it can be re-added as a section.
 
 ---
 
@@ -62,14 +63,19 @@ The assistant is **live** and powered by Google Gemini, running **server-side** 
 > ⚠️ If your key was ever shared publicly, rotate it at
 > [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and update `.env.local`.
 
-## 🔌 Other "live" features (simulated in v1)
+## 📨 Contact form (Formspree)
 
-These are intentionally simulated so the site works with zero extra keys:
+The contact form works out of the box: with no config it opens a prefilled email; once you add a free [Formspree](https://formspree.io) form, it submits in-page with a success state.
 
-| Feature | Where to wire it | Notes |
+- Create a form at [formspree.io](https://formspree.io), copy its id (the part after `/f/`).
+- Set `NEXT_PUBLIC_FORMSPREE_ID` in `.env.local` (see `.env.example`) and in your host's env vars.
+
+## 🔌 Optional integrations to add later
+
+| Feature | Where | Notes |
 |---|---|---|
-| Visitor analytics | `lib/hooks.ts` → `useLiveVisitors` | Swap for Vercel Analytics / Plausible. |
-| Social feeds | `components/Orbit.tsx` | GitHub/YouTube have free APIs; LinkedIn/Instagram heavily restrict theirs. |
+| Real visitor analytics | add `@vercel/analytics` in `app/layout.tsx` | Honest numbers once you have traffic. |
+| Social feeds | `components/Orbit.tsx` | GitHub/YouTube have free APIs; LinkedIn/Instagram restrict theirs. |
 
 The UI stays the same — you only change the data source.
 

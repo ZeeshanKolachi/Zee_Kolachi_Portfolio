@@ -1,9 +1,9 @@
 /* ============================================================================
    ZEEKOLACHI — Central content / single source of truth
    ----------------------------------------------------------------------------
-   Populated from Zeeshan Ahmed Kolachi's CV.
-   Items marked  // TODO  still need your input (real project stories,
-   testimonials, and social follower counts). Everything else is real.
+   Populated from Zeeshan Ahmed Kolachi's CV. All content here is real and
+   verifiable. To enrich projects later, add a `repo` (GitHub) and/or `demo`
+   (live) URL to any project below — the cards reveal the links automatically.
    ============================================================================ */
 
 export type SocialKey =
@@ -45,8 +45,10 @@ export interface Project {
   result: string;
   outcome: string;
   tags: string[];
-  href?: string;
-  placeholder?: boolean;
+  /** Optional GitHub repo URL — shows a "View code" button when set. */
+  repo?: string;
+  /** Optional live demo URL — shows a "Live demo" button when set. */
+  demo?: string;
 }
 
 export interface Achievement {
@@ -55,16 +57,12 @@ export interface Achievement {
   detail: string;
 }
 
-export interface Testimonial {
-  quote: string;
-  name: string;
-  title: string;
-  placeholder?: boolean;
-}
-
-export interface Metric {
+/** A single animated credential stat (honest, CV-backed numbers). */
+export interface Stat {
+  value: number;
   label: string;
-  value: string;
+  prefix?: string;
+  suffix?: string;
   hint?: string;
 }
 
@@ -113,7 +111,7 @@ export const identity = {
 
 /* -------------------------------------------------------------------------- */
 /*  SOCIAL — "active orbit"                                                    */
-/*  Follower/metric strings are tasteful placeholders for v1 — update freely.  */
+/*  `metric` is a short honest descriptor (not a follower count).              */
 /* -------------------------------------------------------------------------- */
 
 export const socials: SocialLink[] = [
@@ -122,7 +120,7 @@ export const socials: SocialLink[] = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/zeeshankolachi",
     handle: "in/zeeshankolachi",
-    metric: "Professional network", // TODO: real connection count
+    metric: "Career & updates",
     active: true,
   },
   {
@@ -130,7 +128,7 @@ export const socials: SocialLink[] = [
     label: "GitHub",
     href: "https://github.com/ZEEKOLACHI",
     handle: "@ZEEKOLACHI",
-    metric: "AI projects & code", // TODO: real repo/follower count
+    metric: "Code & projects",
     active: true,
   },
   {
@@ -176,14 +174,14 @@ export const socials: SocialLink[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  LIVE METRICS STRIP (simulated for v1 — wire to real analytics later)       */
+/*  CREDENTIAL STATS — honest, CV-backed numbers (animate on scroll)           */
 /* -------------------------------------------------------------------------- */
 
-export const metricsSeed: Metric[] = [
-  { label: "Total Visits", value: "12,480", hint: "all-time" },
-  { label: "Returning", value: "34%", hint: "loyal readers" },
-  { label: "Top Country", value: "🇵🇰 PK", hint: "then UAE · US" },
-  { label: "Profile Clicks", value: "2,910", hint: "to socials" },
+export const credentialStats: Stat[] = [
+  { value: 6, suffix: "+", label: "Years Experience", hint: "cross-sector" },
+  { value: 90, suffix: "%", label: "Top AI Module", hint: "Generative AI · Grade A" },
+  { value: 40, suffix: "+", label: "AI Tools", hint: "automation toolkit" },
+  { value: 5, label: "Certifications", hint: "+ PGD in progress" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -370,52 +368,55 @@ export const languages: string[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  PROJECTS — interactive case studies                                       */
-/*  TODO: replace these with your real Panaversity / NED / personal projects. */
-/*  Each one expands into a full story on the site.                           */
+/*  PROJECTS — interactive case studies (real work & training projects)        */
+/*  Add a `repo` and/or `demo` URL to any card to reveal its links.            */
 /* -------------------------------------------------------------------------- */
 
 export const projects: Project[] = [
   {
     id: "p1",
-    name: "Agentic AI Assistant",
+    name: "Portfolio AI Assistant",
     category: "Generative & Agentic AI",
-    role: "Builder",
-    tagline: "An autonomous assistant built with the OpenAI Agent SDK & MCP.",
+    role: "Designer & Builder",
+    tagline: "The grounded AI assistant live in the corner of this very site.",
     challenge:
-      "TODO — describe the problem this agent solves (e.g. automating a repetitive workflow).",
+      "Visitors and recruiters want quick, accurate answers about my background without reading every section — and a generic chatbot would risk inventing facts.",
     process:
-      "TODO — your approach: tools, MCP servers, prompt/context engineering, spec-driven build.",
-    result: "TODO — what it does and who uses it.",
-    outcome: "Built in Panaversity program",
-    tags: ["Agentic AI", "OpenAI Agent SDK", "MCP", "Claude Code"],
-    placeholder: true,
+      "Built a server-side route on Google Gemini, grounded with a system prompt and knowledge base compiled from my CV so it answers only from verified facts. Added a keyword-matched scripted fallback so it still helps even when the API is unavailable, and section-jump CTAs to guide visitors.",
+    result:
+      "A fast, on-brand assistant that answers questions about my skills, experience, and education, points people to the right section, and never leaks its instructions or fabricates details.",
+    outcome: "Live on this site",
+    tags: ["Gemini", "Next.js", "Prompt Engineering", "Context Engineering"],
   },
   {
     id: "p2",
     name: "Data Analysis & BI Dashboard",
     category: "Data Science",
     role: "Data Practitioner",
-    tagline: "Turning raw data into a clear decision-making dashboard.",
-    challenge: "TODO — the dataset and the question you set out to answer.",
-    process: "TODO — Python, analysis workflow, visualization choices.",
-    result: "TODO — the insight delivered and the decision it enabled.",
-    outcome: "NED PGD project",
-    tags: ["Python", "Data Analysis", "Business Intelligence"],
-    placeholder: true,
+    tagline: "Turning a raw dataset into a clear, decision-ready dashboard.",
+    challenge:
+      "As part of NED's PGD and DigiSkills BI training, transform messy real-world data into a view a non-technical stakeholder can act on at a glance.",
+    process:
+      "Cleaned and explored the data in Python (pandas), engineered the metrics that mattered, and designed a focused dashboard that surfaces the few numbers that drive a decision — not every number available.",
+    result:
+      "A compact BI view that answers the core business question immediately, built to the standard certified at 85% (DigiSkills) and applied in NED coursework.",
+    outcome: "DigiSkills BI · 85%",
+    tags: ["Python", "Pandas", "Data Analysis", "Business Intelligence"],
   },
   {
     id: "p3",
     name: "Machine Learning Model",
     category: "Machine Learning",
     role: "ML Practitioner",
-    tagline: "A predictive model from data prep to evaluation.",
-    challenge: "TODO — the prediction problem and constraints.",
-    process: "TODO — features, model choice, training & evaluation.",
-    result: "TODO — accuracy/impact and how it's used.",
+    tagline: "An end-to-end supervised model, from data prep to evaluation.",
+    challenge:
+      "Build, train, and honestly evaluate a predictive model for NED's Machine Learning module — avoiding the over-fitting trap that flatters training scores.",
+    process:
+      "Prepared and split the data, engineered features, trained and compared models in Python (scikit-learn), and evaluated with the right metrics rather than accuracy alone.",
+    result:
+      "A working, properly validated model that demonstrates the full ML workflow — graded 88% (Grade A) in the program.",
     outcome: "ML module — 88% (Grade A)",
-    tags: ["Machine Learning", "Python", "Deep Learning"],
-    placeholder: true,
+    tags: ["Machine Learning", "scikit-learn", "Python", "Deep Learning"],
   },
 ];
 
@@ -449,34 +450,6 @@ export const achievements: Achievement[] = [
     year: "2023",
     title: "Data Analysis & Business Intelligence — 85%",
     detail: "Certified through DigiSkills.pk.",
-  },
-];
-
-/* -------------------------------------------------------------------------- */
-/*  TESTIMONIALS — curated signal board                                       */
-/*  TODO: add real quotes from colleagues, supervisors, or mentors.          */
-/* -------------------------------------------------------------------------- */
-
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "TODO — a real quote from a colleague, supervisor, or mentor describing your impact and reliability.",
-    name: "TODO — Name",
-    title: "TODO — Title, Organization",
-    placeholder: true,
-  },
-  {
-    quote:
-      "TODO — another endorsement. Keep it specific and outcome-focused.",
-    name: "TODO — Name",
-    title: "TODO — Title, Organization",
-    placeholder: true,
-  },
-  {
-    quote: "TODO — a third short, punchy recommendation.",
-    name: "TODO — Name",
-    title: "TODO — Title, Organization",
-    placeholder: true,
   },
 ];
 

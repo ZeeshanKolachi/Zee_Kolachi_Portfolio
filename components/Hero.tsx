@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { identity, socials, achievements, projects } from "@/content/site";
-import { useLiveVisitors } from "@/lib/hooks";
+import { identity, socials, achievements, projects, credentialStats } from "@/content/site";
+import StatNumber from "@/components/StatNumber";
 import {
   ArrowUpRight,
   DownloadIcon,
@@ -58,7 +58,6 @@ function DashboardCard({
 }
 
 export default function Hero() {
-  const visitors = useLiveVisitors();
   const activeSocials = socials.filter((s) => s.active);
   const topAchievement = achievements[0];
   const projectCount = projects.length;
@@ -162,32 +161,34 @@ export default function Hero() {
               </div>
               <span className="flex items-center gap-1.5 text-xs text-neon-soft">
                 <span className="live-dot h-1.5 w-1.5 rounded-full bg-neon" />
-                LIVE
+                OPEN
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              {/* Visitor counter */}
+              {/* Latest milestone (real, from CV) */}
               <div className="col-span-2 rounded-xl border border-edge/60 bg-void/40 p-4">
-                <p className="text-xs text-ink-faint">Visitors all-time</p>
-                <p className="mt-1 font-serif text-3xl font-semibold tabular-nums text-ink">
-                  {visitors.toLocaleString()}
-                </p>
-                <div className="mt-2 h-1 overflow-hidden rounded-full bg-edge">
-                  <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-electric to-neon" />
+                <div className="flex items-center gap-2">
+                  <SparkIcon width={16} height={16} className="text-electric-soft" />
+                  <p className="text-xs text-ink-faint">Latest milestone</p>
                 </div>
+                <p className="mt-1.5 text-sm font-semibold leading-snug text-ink">
+                  {topAchievement.year} · {topAchievement.title.split("—")[0].trim()}
+                </p>
               </div>
 
-              {/* Achievement highlight */}
+              {/* Experience stat (animated, honest) */}
               <DashboardCard delay={0.4} float className="!bg-electric/5">
-                <SparkIcon width={16} height={16} className="text-electric-soft" />
-                <p className="mt-2 text-xs text-ink-faint">Latest milestone</p>
-                <p className="mt-0.5 text-sm font-semibold leading-snug text-ink">
-                  {topAchievement.year} · {topAchievement.title.split("—")[0].trim()}
+                <p className="font-serif text-2xl font-semibold text-electric-soft">
+                  <StatNumber stat={credentialStats[0]} />
+                </p>
+                <p className="text-xs text-ink-faint">{credentialStats[0].label}</p>
+                <p className="mt-1 text-[0.7rem] text-ink-dim">
+                  {credentialStats[0].hint}
                 </p>
               </DashboardCard>
 
-              {/* Project impact */}
+              {/* Case studies count (real) */}
               <DashboardCard delay={0.5} float className="!bg-neon/5">
                 <p className="font-serif text-2xl font-semibold text-neon-soft">
                   {projectCount}+

@@ -2,6 +2,7 @@
 
 import { contact, identity, socials } from "@/content/site";
 import Reveal from "@/components/Reveal";
+import ContactForm from "@/components/ContactForm";
 import {
   socialIcon,
   DownloadIcon,
@@ -57,54 +58,67 @@ export default function Contact() {
               </a>
             </div>
 
-            <div className="mt-10 grid gap-4 border-t border-edge/60 pt-8 sm:grid-cols-2">
+            <div className="mt-10 grid gap-8 border-t border-edge/60 pt-8 lg:grid-cols-2 lg:gap-12">
+              {/* Message form */}
               <div>
                 <p className="text-xs uppercase tracking-widest text-ink-faint">
-                  Direct
+                  Send a message
                 </p>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="mt-1 block text-ink transition-colors hover:text-electric-soft"
-                >
-                  {contact.email}
-                </a>
-                <a
-                  href={`https://wa.me/${contact.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-ink transition-colors hover:text-electric-soft"
-                >
-                  {contact.phone}
-                </a>
-                <p className="mt-1 text-sm text-ink-faint">📍 {identity.location}</p>
+                <div className="mt-3">
+                  <ContactForm />
+                </div>
               </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-ink-faint">
-                  Find me
-                </p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {channels.map((s) => {
-                    const Icon = socialIcon[s.key];
-                    const external = s.href.startsWith("http");
-                    return (
-                      <a
-                        key={s.key}
-                        href={s.href}
-                        target={external ? "_blank" : undefined}
-                        rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className="group flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-3 py-2 text-sm text-ink-dim transition-all hover:border-electric/50 hover:text-electric-soft"
-                      >
-                        <Icon width={16} height={16} />
-                        {s.label}
-                        <ArrowUpRight
-                          width={13}
-                          height={13}
-                          className="opacity-0 transition-opacity group-hover:opacity-100"
-                        />
-                      </a>
-                    );
-                  })}
+
+              {/* Direct details + socials */}
+              <div className="space-y-6">
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-ink-faint">
+                    Direct
+                  </p>
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="mt-1 block text-ink transition-colors hover:text-electric-soft"
+                  >
+                    {contact.email}
+                  </a>
+                  <a
+                    href={`https://wa.me/${contact.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-ink transition-colors hover:text-electric-soft"
+                  >
+                    {contact.phone}
+                  </a>
+                  <p className="mt-1 text-sm text-ink-faint">📍 {identity.location}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-ink-faint">
+                    Find me
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {channels.map((s) => {
+                      const Icon = socialIcon[s.key];
+                      const external = s.href.startsWith("http");
+                      return (
+                        <a
+                          key={s.key}
+                          href={s.href}
+                          target={external ? "_blank" : undefined}
+                          rel="noopener noreferrer"
+                          aria-label={s.label}
+                          className="group flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-3 py-2 text-sm text-ink-dim transition-all hover:border-electric/50 hover:text-electric-soft"
+                        >
+                          <Icon width={16} height={16} />
+                          {s.label}
+                          <ArrowUpRight
+                            width={13}
+                            height={13}
+                            className="opacity-0 transition-opacity group-hover:opacity-100"
+                          />
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>

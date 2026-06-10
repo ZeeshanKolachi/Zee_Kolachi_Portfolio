@@ -8,7 +8,7 @@ const links = [
   { href: "#orbit", label: "Orbit" },
   { href: "#dossier", label: "Dossier" },
   { href: "#projects", label: "Projects" },
-  { href: "#signal", label: "Signal" },
+  { href: "#credentials", label: "Credentials" },
   { href: "#contact", label: "Contact" },
 ];
 

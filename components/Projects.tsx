@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { projects, type Project } from "@/content/site";
+import { projects, socials, type Project } from "@/content/site";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
-import { ArrowUpRight, ChevronDown } from "@/lib/icons";
+import { ArrowUpRight, ChevronDown, GitHubIcon } from "@/lib/icons";
 
 function CaseStudyRow({ label, body }: { label: string; body: string }) {
   return (
@@ -35,14 +35,6 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
             <span className="rounded-full border border-electric/30 bg-electric/10 px-2.5 py-1 text-xs font-medium text-electric-soft">
               {p.category}
             </span>
-            {p.placeholder && (
-              <span
-                className="rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 text-[0.65rem] font-medium uppercase tracking-wide text-amber-300/90"
-                title="Add your real project details in content/site.ts"
-              >
-                Draft
-              </span>
-            )}
           </div>
 
           <h3 className="font-serif text-xl font-semibold text-ink">{p.name}</h3>
@@ -90,15 +82,29 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
                 <CaseStudyRow label="Challenge" body={p.challenge} />
                 <CaseStudyRow label="Process" body={p.process} />
                 <CaseStudyRow label="Result" body={p.result} />
-                {p.href && (
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-electric/40 bg-electric/10 px-3 py-2 text-sm font-medium text-electric-soft transition-colors hover:bg-electric/20"
-                  >
-                    View project <ArrowUpRight width={15} height={15} />
-                  </a>
+                {(p.demo || p.repo) && (
+                  <div className="flex flex-wrap gap-2">
+                    {p.demo && (
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-electric/40 bg-electric/10 px-3 py-2 text-sm font-medium text-electric-soft transition-colors hover:bg-electric/20"
+                      >
+                        Live demo <ArrowUpRight width={15} height={15} />
+                      </a>
+                    )}
+                    {p.repo && (
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-edge bg-white/5 px-3 py-2 text-sm font-medium text-ink transition-colors hover:bg-white/10"
+                      >
+                        <GitHubIcon width={15} height={15} /> View code
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </motion.div>
@@ -110,13 +116,13 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
 }
 
 export default function Projects() {
-  const hasDrafts = projects.some((p) => p.placeholder);
+  const github = socials.find((s) => s.key === "github");
   return (
     <section id="projects" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
       <SectionHeading
         eyebrow="Case Files"
         title="Projects, in depth"
-        intro="Each file expands into the full story — the challenge, the process, and the measurable result. Tap a card to open it."
+        intro="Each file expands into the full story — the challenge, the process, and the result. Tap a card to open it."
       />
 
       <div className="mt-12 grid items-start gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -125,16 +131,24 @@ export default function Projects() {
         ))}
       </div>
 
-      {hasDrafts && (
+      {github && (
         <Reveal delay={0.1}>
-          <p className="mt-6 text-center text-xs text-ink-faint">
-            Cards marked <span className="text-amber-300/90">Draft</span> are
-            scaffolded — replace them with your real project stories in{" "}
-            <code className="rounded bg-void/60 px-1.5 py-0.5 text-ink-dim">
-              content/site.ts
-            </code>
-            .
-          </p>
+          <div className="mt-8 flex justify-center">
+            <a
+              href={github.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-5 py-3 text-sm font-medium text-ink transition-all hover:border-electric/50 hover:bg-white/10"
+            >
+              <GitHubIcon width={18} height={18} />
+              More on GitHub
+              <ArrowUpRight
+                width={15}
+                height={15}
+                className="text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+          </div>
         </Reveal>
       )}
     </section>

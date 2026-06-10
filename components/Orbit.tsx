@@ -1,36 +1,22 @@
 "use client";
 
-import { motion } from "motion/react";
-import { socials, metricsSeed } from "@/content/site";
-import { useLiveVisitors } from "@/lib/hooks";
+import { socials, credentialStats } from "@/content/site";
 import { socialIcon, ArrowUpRight } from "@/lib/icons";
 import SectionHeading from "@/components/SectionHeading";
+import StatNumber from "@/components/StatNumber";
 import Reveal from "@/components/Reveal";
 
 function MetricsStrip() {
-  const visitors = useLiveVisitors();
-  const metrics = [
-    { ...metricsSeed[0], value: visitors.toLocaleString(), live: true },
-    { ...metricsSeed[1], live: false },
-    { ...metricsSeed[2], live: false },
-    { ...metricsSeed[3], live: false },
-  ];
-
   return (
     <Reveal>
       <div className="glass-strong grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge/60 md:grid-cols-4">
-        {metrics.map((m) => (
+        {credentialStats.map((m) => (
           <div key={m.label} className="bg-void/30 p-5">
-            <div className="flex items-center gap-1.5">
-              {m.live && (
-                <span className="live-dot h-1.5 w-1.5 rounded-full bg-neon" />
-              )}
-              <p className="text-xs uppercase tracking-wider text-ink-faint">
-                {m.label}
-              </p>
-            </div>
-            <p className="mt-1.5 font-serif text-2xl font-semibold tabular-nums text-ink sm:text-3xl">
-              {m.value}
+            <p className="text-xs uppercase tracking-wider text-ink-faint">
+              {m.label}
+            </p>
+            <p className="mt-1.5 font-serif text-2xl font-semibold text-ink sm:text-3xl">
+              <StatNumber stat={m} />
             </p>
             {m.hint && <p className="mt-0.5 text-xs text-ink-faint">{m.hint}</p>}
           </div>
@@ -49,7 +35,7 @@ export default function Orbit() {
       <SectionHeading
         eyebrow="Active Orbit"
         title="Where I operate"
-        intro="A live snapshot of presence and reach. Channels in orbit are active now; greyed nodes come online as I expand."
+        intro="A snapshot of the record at a glance, and the channels I'm reachable on. Active nodes are live now; greyed nodes come online as I expand."
       />
 
       <div className="mt-10">
