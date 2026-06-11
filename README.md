@@ -8,11 +8,13 @@ Built with **Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Motion (
 
 ## ✨ What's inside
 
-- **Cinematic split hero** — identity + a "mission dashboard" of honest, CV-backed stats (years of experience, top AI-module grade, latest milestone, project count, social presence).
+- **Animated aurora backdrop** — drifting electric/neon/violet glow blobs, a cursor-reactive spotlight, and subtle film grain behind every section.
+- **Cinematic split hero** — identity + a "mission dashboard" of honest, CV-backed stats (years of experience, top AI-module grade, latest milestone, project count, social presence), with an animated gradient name.
 - **Active Orbit** — social links + an animated strip of real credential stats (no fabricated traffic numbers).
 - **Intelligence Dossier** — skills, an experience timeline, and an achievements grid.
 - **Training & Clearance** — education, certifications, and languages (from the CV).
-- **Case Files** — interactive project cards that expand into full challenge → process → result stories, with optional GitHub/live-demo links + a "More on GitHub" CTA.
+- **Case Files** — interactive project cards that expand into full challenge → process → result stories, with hover glow, optional GitHub/live-demo links + a "More on GitHub" CTA.
+- **Polished micro-interactions** — reusable hover-lift, animated gradient ring-glow, button sheen, and neon accent-row utilities throughout (all reduced-motion aware).
 - **Open Channel** — a working contact form (Formspree, with a prefilled-email fallback) plus WhatsApp, email, and CV download.
 - **AI Assistant** — a real **Gemini-powered** assistant (server-side, key never exposed) that answers questions from the CV and jumps to relevant sections. Falls back automatically to a built-in scripted assistant if the API is unavailable.
 - **Share-ready** — an auto-generated Open Graph / Twitter card image for clean link previews.
@@ -97,7 +99,17 @@ Free tier covers a personal portfolio comfortably and includes HTTPS + a global 
 
 ## 🎨 Design tokens
 
-Colors, fonts, glass/glow effects, and animations are defined in [`app/globals.css`](app/globals.css) (electric blue, neon green, silver on a deep void background; Fraunces serif + Inter sans).
+Colors, fonts, glass/glow effects, and animations are defined in [`app/globals.css`](app/globals.css) (electric blue, neon green, violet, silver on a deep void background; Fraunces serif + Inter sans).
+
+Reusable interaction utilities you can drop onto any element:
+
+| Class | Effect |
+|---|---|
+| `.hover-lift` | Lifts + glows on hover (for static cards) |
+| `.hover-glow` | Glow + border on hover, no transform (safe for Framer `layout` cards) |
+| `.ring-glow` | Animated gradient border ring on hover |
+| `.btn-sheen` | Light sweep across a button on hover |
+| `.row-accent` | Inset neon accent bar on hover (list rows, no layout shift) |
 
 ---
 
