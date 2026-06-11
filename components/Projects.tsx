@@ -23,7 +23,7 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
     <Reveal delay={index * 0.06} className="h-full">
       <motion.div
         layout
-        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-gradient-to-br from-panel/60 to-void/20 transition-colors hover:border-electric/40"
+        className="hover-glow group flex h-full flex-col overflow-hidden rounded-2xl border border-edge bg-gradient-to-br from-panel/60 to-void/20"
       >
         <button
           type="button"
@@ -37,7 +37,9 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
             </span>
           </div>
 
-          <h3 className="font-serif text-xl font-semibold text-ink">{p.name}</h3>
+          <h3 className="font-serif text-xl font-semibold text-ink transition-colors group-hover:text-neon-soft">
+            {p.name}
+          </h3>
           <p className="text-sm text-ink-dim">{p.tagline}</p>
 
           <div className="mt-1 flex flex-wrap gap-1.5">
@@ -138,7 +140,7 @@ export default function Projects() {
               href={github.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-5 py-3 text-sm font-medium text-ink transition-all hover:border-electric/50 hover:bg-white/10"
+              className="btn-sheen group inline-flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-5 py-3 text-sm font-medium text-ink transition-all hover:border-electric/50 hover:bg-white/10"
             >
               <GitHubIcon width={18} height={18} />
               More on GitHub

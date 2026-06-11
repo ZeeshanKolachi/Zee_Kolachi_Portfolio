@@ -23,7 +23,7 @@ export default function Credentials() {
           <ol className="space-y-4">
             {education.map((e, i) => (
               <Reveal key={`${e.title}-${i}`} delay={i * 0.04} as="li">
-                <div className="rounded-2xl border border-edge bg-panel/30 p-5 transition-colors hover:border-electric/40">
+                <div className="hover-lift rounded-2xl border border-edge bg-panel/30 p-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h4 className="font-serif text-lg font-semibold text-ink">
                       {e.title}
@@ -63,7 +63,7 @@ export default function Credentials() {
                 {certifications.map((c) => (
                   <li
                     key={c.course}
-                    className="flex items-center justify-between gap-3 p-4 transition-colors hover:bg-white/[0.02]"
+                    className="row-accent flex items-center justify-between gap-3 p-4 hover:bg-white/[0.04]"
                   >
                     <div>
                       <p className="text-sm font-medium text-ink">{c.course}</p>
@@ -91,7 +91,7 @@ export default function Credentials() {
                 {languages.map((l) => (
                   <span
                     key={l}
-                    className="rounded-full border border-edge bg-void/40 px-3 py-1.5 text-sm text-ink-dim"
+                    className="rounded-full border border-edge bg-void/40 px-3 py-1.5 text-sm text-ink-dim transition-all hover:-translate-y-0.5 hover:border-electric/50 hover:bg-electric/10 hover:text-ink"
                   >
                     {l}
                   </span>

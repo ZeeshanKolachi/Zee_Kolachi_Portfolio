@@ -316,6 +316,17 @@ body {
     0 0 0 1px rgba(116, 255, 210, 0.15);
 }
 
+/* Glow + border on hover WITHOUT transform — safe for Framer `layout` cards */
+.hover-glow {
+  transition: box-shadow 0.4s var(--ease-out-expo),
+    border-color 0.4s var(--ease-out-expo);
+}
+.hover-glow:hover {
+  border-color: rgba(116, 255, 210, 0.35);
+  box-shadow: 0 22px 50px -30px rgba(47, 123, 255, 0.6),
+    0 0 0 1px rgba(116, 255, 210, 0.12);
+}
+
 /* Animated gradient ring border — wrap any element */
 .ring-glow {
   position: relative;
@@ -342,6 +353,15 @@ body {
 }
 .ring-glow:hover::before {
   opacity: 1;
+}
+
+/* Inset neon accent bar on hover — no layout shift (list rows) */
+.row-accent {
+  box-shadow: inset 0 0 0 0 transparent;
+  transition: box-shadow 0.3s var(--ease-out-expo), background-color 0.3s ease;
+}
+.row-accent:hover {
+  box-shadow: inset 3px 0 0 0 var(--color-neon);
 }
 
 /* Sheen sweep for primary buttons */
