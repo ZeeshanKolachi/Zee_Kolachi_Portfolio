@@ -88,7 +88,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="font-serif text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-ink sm:text-6xl lg:text-[4.1rem]"
           >
-            {identity.fullName.split(" ").slice(0, 2).join(" ")}
+            <span className="text-gradient">
+              {identity.fullName.split(" ").slice(0, 2).join(" ")}
+            </span>
             <br />
             <span className="text-ink-dim">
               {identity.fullName.split(" ").slice(2).join(" ")}
@@ -121,7 +123,7 @@ export default function Hero() {
           >
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-xl bg-electric px-5 py-3 font-semibold text-white transition-all hover:glow-electric"
+              className="btn-sheen group inline-flex items-center gap-2 rounded-xl bg-electric px-5 py-3 font-semibold text-white transition-all hover:glow-electric"
             >
               Explore the work
               <ArrowUpRight
@@ -153,7 +155,7 @@ export default function Hero() {
         {/* ---------------- Mission dashboard side ---------------- */}
         <div className="relative">
           <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-electric/5 blur-3xl" />
-          <DashboardCard className="glass-strong" delay={0.2}>
+          <DashboardCard className="glass-strong hover-lift ring-glow" delay={0.2}>
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <RadarIcon width={18} height={18} className="text-neon" />

@@ -179,7 +179,12 @@ export const socials: SocialLink[] = [
 
 export const credentialStats: Stat[] = [
   { value: 6, suffix: "+", label: "Years Experience", hint: "cross-sector" },
-  { value: 90, suffix: "%", label: "Top AI Module", hint: "Generative AI · Grade A" },
+  {
+    value: 90,
+    suffix: "%",
+    label: "Top AI Module",
+    hint: "Generative AI · Grade A",
+  },
   { value: 40, suffix: "+", label: "AI Tools", hint: "automation toolkit" },
   { value: 5, label: "Certifications", hint: "+ PGD in progress" },
 ];
@@ -337,26 +342,39 @@ export const education: EducationItem[] = [
     period: "2009",
     result: "54%",
   },
-  {
-    title: "HSC (Pre-Engineering)",
-    org: "BISE Sukkur",
-    period: "2007",
-    result: "60%",
-  },
-  {
-    title: "SSC (Science)",
-    org: "BISE Sukkur",
-    period: "2005",
-    result: "71%",
-  },
 ];
 
 export const certifications: CertItem[] = [
-  { course: "Machine Learning, AI & Data Science", provider: "eHunar.org", score: "84%", year: "2024" },
-  { course: "Data Analysis & Business Intelligence", provider: "DigiSkills.pk", score: "85%", year: "2023" },
-  { course: "Digital Literacy", provider: "DigiSkills.pk", score: "79%", year: "2020" },
-  { course: "Diploma in MS Office 2010", provider: "Alison.com", score: "86%", year: "2016" },
-  { course: "Diploma in Information Technology", provider: "SBTE, Karachi", score: "60%", year: "2010" },
+  {
+    course: "Machine Learning, AI & Data Science",
+    provider: "eHunar.org",
+    score: "84%",
+    year: "2024",
+  },
+  {
+    course: "Data Analysis & Business Intelligence",
+    provider: "DigiSkills.pk",
+    score: "85%",
+    year: "2023",
+  },
+  {
+    course: "Digital Literacy",
+    provider: "DigiSkills.pk",
+    score: "79%",
+    year: "2020",
+  },
+  {
+    course: "Diploma in MS Office 2010",
+    provider: "Alison.com",
+    score: "86%",
+    year: "2016",
+  },
+  {
+    course: "Diploma in Information Technology",
+    provider: "SBTE, Karachi",
+    score: "60%",
+    year: "2010",
+  },
 ];
 
 export const languages: string[] = [
@@ -434,12 +452,14 @@ export const achievements: Achievement[] = [
   {
     year: "2025",
     title: "Certified Agentic AI Architect Program (Level 1)",
-    detail: "Enrolled and advancing through Panaversity's flagship Agentic AI program.",
+    detail:
+      "Enrolled and advancing through Panaversity's flagship Agentic AI program.",
   },
   {
     year: "2024",
     title: "Generative AI (Agentic AI) — 90%, Grade A",
-    detail: "Top module result in NED University's Postgraduate Diploma in Data Science & AI.",
+    detail:
+      "Top module result in NED University's Postgraduate Diploma in Data Science & AI.",
   },
   {
     year: "2024",
@@ -471,7 +491,8 @@ export const contact = {
 /* -------------------------------------------------------------------------- */
 
 export const seo = {
-  title: "ZEEKOLACHI — Zeeshan Ahmed Kolachi · Agentic AI Architect & Data Science Practitioner",
+  title:
+    "ZEEKOLACHI — Zeeshan Ahmed Kolachi · Agentic AI Architect & Data Science Practitioner",
   description:
     "The personal operating system of Zeeshan Ahmed Kolachi (ZEEKOLACHI): Agentic AI architect in training, data science practitioner, and primary school teacher. Projects, achievements, and a live mission dashboard.",
   // TODO: set this to your final domain once purchased
