@@ -10,6 +10,14 @@ interface ChatTurn {
 
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
+// Gemini 2.5 Flash spends "thinking" tokens from the same maxOutputTokens
+// budget, which can leave little or nothing for the visible reply. Disable
+// thinking on models that support it (2.5 Pro cannot turn it off).
+const THINKING_OFF =
+  MODEL.includes("2.5") && !MODEL.includes("pro")
+    ? { thinkingConfig: { thinkingBudget: 0 } }
+    : {};
+
 export async function POST(req: Request) {
   const apiKey = process.env.GEMINI_API_KEY;
 
@@ -63,7 +71,8 @@ export async function POST(req: Request) {
         contents,
         generationConfig: {
           temperature: 0.6,
-          maxOutputTokens: 400,
+          maxOutputTokens: 800,
+          ...THINKING_OFF,
         },
         safetySettings: [
           { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
@@ -79,14 +88,25 @@ export async function POST(req: Request) {
     }
 
     const data = await res.json();
-    const text: string | undefined =
-      data?.candidates?.[0]?.content?.parts
-        ?.map((p: { text?: string }) => p.text || "")
-        .join("")
-        .trim();
+    const candidate = data?.candidates?.[0];
+    let text: string | undefined = candidate?.content?.parts
+      ?.map((p: { text?: string }) => p.text || "")
+      .join("")
+      .trim();
 
     if (!text) {
       return NextResponse.json({ fallback: true }, { status: 200 });
+    }
+
+    // If the reply was cut off at the token limit, trim back to the last
+    // complete sentence rather than showing a mid-sentence break.
+    if (candidate?.finishReason === "MAX_TOKENS") {
+      const lastStop = Math.max(
+        text.lastIndexOf("."),
+        text.lastIndexOf("!"),
+        text.lastIndexOf("?")
+      );
+      if (lastStop > 0) text = text.slice(0, lastStop + 1);
     }
 
     return NextResponse.json({ text });
