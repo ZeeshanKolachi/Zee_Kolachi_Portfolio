@@ -94,8 +94,8 @@ export const identity = {
   fullName: "Zeeshan Ahmed Kolachi",
   brand: "ZEEKOLACHI",
   roles: [
-    "Agentic AI Architect (In Training)",
-    "Data Science & AI Practitioner",
+    "Agentic AI Architect",
+    "Data Science & AI Automation Expert",
     "Primary School Teacher",
     "AI-Native Builder",
   ],
@@ -201,6 +201,7 @@ export const skillGroups: SkillGroup[] = [
       "Machine Learning",
       "Deep Learning",
       "Generative & Agentic AI",
+      "Ai Agent Automation Expert",
       "Data Analysis",
       "Business Intelligence",
     ],
@@ -212,6 +213,7 @@ export const skillGroups: SkillGroup[] = [
       "OpenAI Agent SDK",
       "OpenClaw",
       "MCP Servers",
+      "AI Agents Automation",
       "Prompt & Context Engineering",
       "Spec-Driven Development",
       "40+ AI productivity tools",
@@ -245,6 +247,30 @@ export const skillGroups: SkillGroup[] = [
 
 export const roles: Role[] = [
   {
+    title: "Agentic AI Teacher",
+    org: "Syllani Welfare Trust",
+    period: "Jun 2026 – Present",
+    current: true,
+    summary:
+      "Teaching Agentic AI fundamentals and hands-on tooling to learners at Syllani Welfare Trust.",
+    highlights: [
+      "Deliver Agentic AI lessons and hands-on tooling sessions",
+      "Translate technical AI concepts for a general audience",
+    ],
+  },
+  {
+    title: "Project Management Student",
+    org: "Syllani Welfare Trust",
+    period: "Jun 2026 – Present",
+    current: true,
+    summary:
+      "Building project-management fundamentals alongside the Agentic AI curriculum — planning, scoping, and delivering AI-native work end-to-end.",
+    highlights: [
+      "Studying project management fundamentals within Panaversity's Agentic AI Architect track",
+      "Applying planning and delivery discipline to AI-native project work",
+    ],
+  },
+  {
     title: "Primary School Teacher (Permanent)",
     org: "Sindh Education & Literacy Department, Govt. of Sindh",
     period: "Jun 2025 – Present",
@@ -255,64 +281,6 @@ export const roles: Role[] = [
       "Deliver foundational education to primary-level students",
       "Maintain academic and attendance records",
       "Track student progress and integrate digital literacy",
-    ],
-  },
-  {
-    title: "Computer Operator (BPS-11)",
-    org: "Municipal Committee, Ghotki",
-    period: "Oct 2016 – May 2018",
-    summary:
-      "Served the Finance & Engineering branches — financial record-keeping, estimates, and budget support.",
-    highlights: [
-      "Prepared salary bills, estimates, and income & expenditure statements",
-      "Maintained cash book, cheque book, budget control & establishment records",
-      "Supported annual budget preparation and Sindhi/Urdu composition",
-    ],
-  },
-  {
-    title: "Accountant",
-    org: "University of Kids Elementary School, Ghotki",
-    period: "Feb 2016 – Sep 2016",
-    summary:
-      "Managed fees, admissions, and ledgers while supporting a 50+ staff school operation.",
-    highlights: [
-      "Managed fee collection, new admissions and ledger maintenance",
-      "Resolved parent and student queries",
-      "Supported 50+ staff",
-    ],
-  },
-  {
-    title: "Customer Relationship Officer",
-    org: "Telenor Franchise, Ghotki",
-    period: "Oct 2015 – Jan 2016",
-    summary:
-      "Front-line customer service for telecom operations and retention.",
-    highlights: [
-      "Handled SIM modification/replacement and prepaid–postpaid conversions",
-      "Advised and retained customers through responsive service",
-    ],
-  },
-  {
-    title: "Computer Operator",
-    org: "District Bar Association, Ghotki",
-    period: "Jun 2011 – Sep 2012",
-    summary:
-      "Legal documentation support and bilingual composing for the bar association.",
-    highlights: [
-      "Drafted bail and High Court applications",
-      "Sindhi/Urdu composing and FIR translations",
-      "Related legal documentation support",
-    ],
-  },
-  {
-    title: "Computer Operator",
-    org: "Office of the Executive Engineer, Tube Well Division, Ghotki",
-    period: "Feb 2009 – Nov 2010",
-    summary:
-      "Official correspondence and accounts-branch record-keeping for a government engineering division.",
-    highlights: [
-      "Composed official correspondence; maintained office & accounts records",
-      "Prepared estimates, reconciliation reports and annual budgets",
     ],
   },
 ];
@@ -335,12 +303,6 @@ export const education: EducationItem[] = [
     period: "2024",
     detail:
       "Modules: Generative AI (Agentic AI) 90% A · Machine Learning 88% A · Deep Learning 84% A · Python for Data Science 75% B+ · Fundamentals of AI 75% B.",
-  },
-  {
-    title: "B.Sc (Math, Physics & Chemistry)",
-    org: "Shah Abdul Latif University, Khairpur",
-    period: "2009",
-    result: "54%",
   },
 ];
 

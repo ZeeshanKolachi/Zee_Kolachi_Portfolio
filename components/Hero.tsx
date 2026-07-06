@@ -6,7 +6,6 @@ import { identity, socials, achievements, projects, credentialStats } from "@/co
 import StatNumber from "@/components/StatNumber";
 import {
   ArrowUpRight,
-  DownloadIcon,
   RadarIcon,
   SparkIcon,
   socialIcon,
@@ -131,14 +130,6 @@ export default function Hero() {
                 height={18}
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
-            </a>
-            <a
-              href={identity.cvPath}
-              download
-              className="inline-flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-5 py-3 font-medium text-ink transition-colors hover:bg-white/10"
-            >
-              <DownloadIcon width={18} height={18} />
-              Download CV
             </a>
           </motion.div>
 

@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Orbit from "@/components/Orbit";
 import Dossier from "@/components/Dossier";
+import PrimarySchoolTeacher from "@/components/PrimarySchoolTeacher";
 import Credentials from "@/components/Credentials";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
@@ -18,6 +19,7 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Orbit />
+        <PrimarySchoolTeacher />
         <Dossier />
         <Credentials />
         <Projects />

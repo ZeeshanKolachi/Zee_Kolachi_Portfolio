@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { identity } from "@/content/site";
-import { DownloadIcon, MenuIcon, CloseIcon } from "@/lib/icons";
+import { MenuIcon, CloseIcon } from "@/lib/icons";
 
 const links = [
-  { href: "#orbit", label: "Orbit" },
+  { href: "#orbit", label: "About" },
+  { href: "#teacher", label: "Primary School Teacher" },
   { href: "#dossier", label: "Dossier" },
   { href: "#projects", label: "Projects" },
   { href: "#credentials", label: "Credentials" },
@@ -59,14 +60,6 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href={identity.cvPath}
-            download
-            className="hidden items-center gap-1.5 rounded-xl border border-electric/40 bg-electric/10 px-3.5 py-2 text-sm font-medium text-electric-soft transition-all hover:glow-electric hover:bg-electric/20 sm:flex"
-          >
-            <DownloadIcon width={16} height={16} />
-            CV
-          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -94,17 +87,6 @@ export default function Nav() {
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href={identity.cvPath}
-                download
-                onClick={() => setOpen(false)}
-                className="mt-1 flex items-center gap-2 rounded-lg border border-electric/40 bg-electric/10 px-4 py-3 font-medium text-electric-soft"
-              >
-                <DownloadIcon width={16} height={16} />
-                Download CV
-              </a>
-            </li>
           </ul>
         </div>
       )}

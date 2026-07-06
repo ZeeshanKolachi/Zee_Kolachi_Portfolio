@@ -5,7 +5,6 @@ import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import {
   socialIcon,
-  DownloadIcon,
   WhatsAppIcon,
   MailIcon,
   ArrowUpRight,
@@ -47,14 +46,6 @@ export default function Contact() {
               >
                 <MailIcon width={18} height={18} />
                 Email me
-              </a>
-              <a
-                href={identity.cvPath}
-                download
-                className="inline-flex items-center gap-2 rounded-xl border border-edge bg-white/5 px-5 py-3 font-medium text-ink transition-colors hover:bg-white/10"
-              >
-                <DownloadIcon width={18} height={18} />
-                Download CV
               </a>
             </div>
 
